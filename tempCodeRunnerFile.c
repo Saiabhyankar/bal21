@@ -45,6 +45,7 @@ void addEdge(Graph* graph, int src, int dest) {
     graph->adjLists[dest] = newNode;
 }
 
+// Check if graph is complete
 int isComplete(Graph* graph) {
     int vertices = graph->numVertices;
     for (int i = 0; i < vertices; i++) {
@@ -60,6 +61,7 @@ int isComplete(Graph* graph) {
     return 1;
 }
 
+// Obtain degree of a node
 int degree(Graph* graph, int vertex) {
     int degree = 0;
     Node* temp = graph->adjLists[vertex];
@@ -70,6 +72,7 @@ int degree(Graph* graph, int vertex) {
     return degree;
 }
 
+// Check if there is a path between two vertices
 int isPathExists(Graph* graph, int startVertex, int endVertex) {
     if (startVertex == endVertex) return 1;
     
@@ -87,6 +90,7 @@ int isPathExists(Graph* graph, int startVertex, int endVertex) {
     return 0;
 }
 
+// Breadth-First Traversal
 void BFT(Graph* graph, int startVertex) {
     int queue[MAX], front = 0, rear = 0;
     int distance[MAX];
@@ -122,6 +126,7 @@ void BFT(Graph* graph, int startVertex) {
     printf("\n");
 }
 
+// Depth-First Traversal
 void DFTUtil(Graph* graph, int vertex, int* finishTime, int* time, int* hasCycle) {
     graph->visited[vertex] = 1;
     printf("%d ", vertex);
@@ -173,6 +178,7 @@ int main() {
     addEdge(graph, 1, 2);
     addEdge(graph, 1, 3);
     addEdge(graph, 2, 3);
+    
 
     printf("Graph is %scomplete\n", isComplete(graph) ? "" : "not ");
     
